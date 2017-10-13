@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { addRecipe } from '../actions';
 import logo from "../logo.svg";
 import "../App.css";
 import { connect } from 'react-redux';
+import { addRecipe, removeFromCalendar } from '../actions';
 
 
 class App extends Component {
@@ -34,5 +34,13 @@ function mapStateToProps(calendar) {
 	}
 }
 
+function mapDispatchToProps (dispatch) {
+	return {
+		selectRecipe: (data) => dispatch(addRecipe(data)),
+		remove: (data) => dispatch(removeFromCalendar(data))
+	}
 
-export default connect(mapStateToProps)(App);
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
